@@ -1,7 +1,7 @@
 Net Ecosystem Exchange experiment using machine learning approaches to modeling daily NEE. 
 Here can be found the .csv files, containing the environmental variables, used as input for the models training and the .ipynb files with the code to reproduce the experiment.
 
-Daily data that includes the target variable Net Ecosystem Exchange and its predictors used in the experiment made by Bauer et al., (2025) in the paper (under revision) entitled: 
+Daily data that includes the target variable Net Ecosystem Exchange and its predictors used in the experiment made by Bauer et al., (2026) in the paper (under revision) entitled: 
 "Modeling daily Net Ecosystem Exchange in a primary forest site in Amazonia using two machine learning approaches". 
 The set of predictors contains 20 environmental variables includes local meteorological variables and ecosystem-related variables such as leaf area index and soil temperature e umidity. 
 
