@@ -1,0 +1,97 @@
+===============================================================
+Job Started at Fri Jun 12 16:50:44 -03 2026
+Job ID: 454090
+Running on node: sdumont2nd2026
+===============================================================
+Starting Python script for NEE prediction using MLP...
+--- Loading data MLP D1 SS Experiment 7 Key Features ---
+
+--- Iniciando Optuna Optimization ---
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1781294638.194770 3057212 gpu_device.cc:2020] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 78783 MB memory:  -> device: 0, name: NVIDIA H100 80GB HBM3, pci bus id: 0000:2c:00.0, compute capability: 9.0
+E0000 00:00:1781294664.160834 3057524 ptx_compiler_helpers.cc:88] *** WARNING *** Invoking ptxas with version 12.6.77, which corresponds to a CUDA version <=12.6.2. CUDA versions 12.x.y up to and including 12.6.2 miscompile certain edge cases around clamping.
+Please upgrade to CUDA 12.6.3 or newer.
+I0000 00:00:1781294694.488205 3057502 device_compiler.h:196] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+>> Trial 0 Summary -> MSE Mean & SD: 1.260 (0.141) | RMSE Mean & SD: 1.121 (0.063) | R2 Mean & SD: 0.481 (0.096) | MEF Mean & SD: 0.482 (0.097)
+>> Trial 50 Summary -> MSE Mean & SD: 1.030 (0.039) | RMSE Mean & SD: 1.015 (0.019) | R2 Mean & SD: 0.580 (0.016) | MEF Mean & SD: 0.581 (0.016)
+>> Trial 100 Summary -> MSE Mean & SD: 0.991 (0.122) | RMSE Mean & SD: 0.994 (0.062) | R2 Mean & SD: 0.591 (0.081) | MEF Mean & SD: 0.592 (0.081)
+>> Trial 150 Summary -> MSE Mean & SD: 1.155 (0.147) | RMSE Mean & SD: 1.073 (0.069) | R2 Mean & SD: 0.523 (0.096) | MEF Mean & SD: 0.524 (0.096)
+
+Best Trial Params: 
+n_units: 9
+n_layers: 1
+learning_rate: 0.00946084872838298
+l2_reg_strength: 0.02341499166039875
+batch_size: 32
+activation: tanh
+kernel_initializer: normal
+dropout_rate: 0
+n_units_0: 19
+activation_0: relu
+l2_reg_strength_0: 0.07659083624976279
+kernel_initializer_0: normal
+dropout_rate_0: 0
+
+Best Trial Metrics (Mean ± SD across Seasons):
+MSE:  0.8761 ± 0.0945
+RMSE: 0.9346 ± 0.0505
+R2:   0.6389 ± 0.0656
+MEF:   0.6397 ± 0.0660
+
+Best Trial Metrics DETAILED by Season:
+Estacao_Chuvosa  -> MSE: 0.9705 | RMSE: 0.9852 | R2: 0.5733 | MEF: 0.5738
+Estacao_Seca     -> MSE: 0.7816 | RMSE: 0.8841 | R2: 0.7045 | MEF: 0.7057
+=======================================================
+
+
+--- Treinando o Modelo Final ---
+[1m1/5[0m [32m━━━━[0m[37m━━━━━━━━━━━━━━━━[0m [1m0s[0m 196ms/step[1m5/5[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 69ms/step [1m5/5[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 73ms/step
+
+=======================================================
+--- FINAL TEST SET METRICS (MLP vs BASELINES) ---
+=======================================================
+
+Model: MLP
+R2:   0.4638
+MEF:  0.4678
+MSE:  1.2850
+RMSE: 1.1336
+
+Model: Persistence
+R2:   -0.6193
+MEF:  -0.6073
+MSE:  3.8806
+RMSE: 1.9699
+
+Model: Mean Seasonal
+R2:   -0.3789
+MEF:  -0.3687
+MSE:  3.3044
+RMSE: 1.8178
+
+--- Gerando Gráficos Detalhados do MLP ---
+
+--- Gerando Gráfico Comparativo: MLP vs Baselines ---
+
+--- Scenario Classification Metrics (MLP vs Baselines) ---
+
+[MLP] Sink Scenarios -> POD: 0.793, FAR: 0.270, BIAS: 1.086, CSI: 0.613, Accuracy: 0.773
+[MLP] Source Scenarios -> POD: 0.757, FAR: 0.185, BIAS: 0.929, CSI: 0.646, Accuracy: 0.773
+
+[Persistence] Sink Scenarios -> POD: 0.603, FAR: 0.375, BIAS: 0.966, CSI: 0.443, Accuracy: 0.656
+[Persistence] Source Scenarios -> POD: 0.700, FAR: 0.319, BIAS: 1.029, CSI: 0.527, Accuracy: 0.656
+
+[Mean Seasonal] Sink Scenarios -> POD: 0.672, FAR: 0.426, BIAS: 1.172, CSI: 0.448, Accuracy: 0.625
+[Mean Seasonal] Source Scenarios -> POD: 0.586, FAR: 0.317, BIAS: 0.857, CSI: 0.461, Accuracy: 0.625
+
+--- Generating Performance Diagrams (Roebber Plots) ---
+Performance Diagram (Sinks) saved!
+Performance Diagram (Sources) saved!
+
+--- Iniciando Análise SHAP no Conjunto de Treinamento ---
+Salvando gráficos SHAP no diretório...
+
+--- Script finished successfully MRMR MLP D1 SS 7 Key Features ---
+===============================================================
+Job Finished at Fri Jun 12 18:31:42 -03 2026
+===============================================================

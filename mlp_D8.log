@@ -1,0 +1,92 @@
+===============================================================
+Job Started at Fri Jun 12 16:51:12 -03 2026
+Job ID: 454091
+Running on node: sdumont2nd2029
+===============================================================
+Starting Python script for NEE prediction using MLP...
+--- Loading data MLP D2 SS Experiment 7 Key Features ---
+
+--- Iniciando Optuna Optimization ---
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1781294638.082305 2944621 gpu_device.cc:2020] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 78783 MB memory:  -> device: 0, name: NVIDIA H100 80GB HBM3, pci bus id: 0000:1b:00.0, compute capability: 9.0
+E0000 00:00:1781294664.161891 2945018 ptx_compiler_helpers.cc:88] *** WARNING *** Invoking ptxas with version 12.6.77, which corresponds to a CUDA version <=12.6.2. CUDA versions 12.x.y up to and including 12.6.2 miscompile certain edge cases around clamping.
+Please upgrade to CUDA 12.6.3 or newer.
+I0000 00:00:1781294694.493638 2944992 device_compiler.h:196] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+>> Trial 0 Summary -> MSE Mean & SD: 1.237 (0.096) | RMSE Mean & SD: 1.111 (0.043) | R2 Mean & SD: 0.517 (0.024) | MEF Mean & SD: 0.520 (0.021)
+>> Trial 50 Summary -> MSE Mean & SD: 1.475 (0.090) | RMSE Mean & SD: 1.214 (0.037) | R2 Mean & SD: 0.423 (0.038) | MEF Mean & SD: 0.426 (0.035)
+>> Trial 100 Summary -> MSE Mean & SD: 1.204 (0.150) | RMSE Mean & SD: 1.095 (0.068) | R2 Mean & SD: 0.533 (0.001) | MEF Mean & SD: 0.535 (0.001)
+>> Trial 150 Summary -> MSE Mean & SD: 1.487 (0.191) | RMSE Mean & SD: 1.217 (0.079) | R2 Mean & SD: 0.424 (0.001) | MEF Mean & SD: 0.426 (0.004)
+
+Best Trial Params: 
+n_units: 49
+n_layers: 0
+learning_rate: 0.00513170079458789
+l2_reg_strength: 0.0035624656956415503
+batch_size: 32
+activation: relu
+kernel_initializer: normal
+dropout_rate: 0
+
+Best Trial Metrics (Mean ± SD across Seasons):
+MSE:  1.0521 ± 0.0803
+RMSE: 1.0250 ± 0.0392
+R2:   0.5893 ± 0.0207
+MEF:   0.5915 ± 0.0188
+
+Best Trial Metrics DETAILED by Season:
+Estacao_Chuvosa  -> MSE: 1.1324 | RMSE: 1.0641 | R2: 0.6100 | MEF: 0.6102
+Estacao_Seca     -> MSE: 0.9718 | RMSE: 0.9858 | R2: 0.5686 | MEF: 0.5727
+=======================================================
+
+
+--- Treinando o Modelo Final ---
+[1m 1/14[0m [32m━[0m[37m━━━━━━━━━━━━━━━━━━━[0m [1m1s[0m 138ms/step[1m14/14[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 9ms/step  [1m14/14[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 10ms/step
+
+=======================================================
+--- FINAL TEST SET METRICS (MLP vs BASELINES) ---
+=======================================================
+
+Model: MLP
+R2:   0.4511
+MEF:  0.4519
+MSE:  1.3726
+RMSE: 1.1716
+
+Model: Persistence
+R2:   -0.1215
+MEF:  -0.1199
+MSE:  2.8043
+RMSE: 1.6746
+
+Model: Mean Seasonal
+R2:   -0.1035
+MEF:  -0.1018
+MSE:  2.7591
+RMSE: 1.6611
+
+--- Gerando Gráficos Detalhados do MLP ---
+
+--- Gerando Gráfico Comparativo: MLP vs Baselines ---
+
+--- Scenario Classification Metrics (MLP vs Baselines) ---
+
+[MLP] Sink Scenarios -> POD: 0.725, FAR: 0.229, BIAS: 0.940, CSI: 0.596, Accuracy: 0.744
+[MLP] Source Scenarios -> POD: 0.765, FAR: 0.282, BIAS: 1.065, CSI: 0.588, Accuracy: 0.744
+
+[Persistence] Sink Scenarios -> POD: 0.693, FAR: 0.304, BIAS: 0.995, CSI: 0.532, Accuracy: 0.682
+[Persistence] Source Scenarios -> POD: 0.670, FAR: 0.333, BIAS: 1.005, CSI: 0.502, Accuracy: 0.682
+
+[Mean Seasonal] Sink Scenarios -> POD: 0.537, FAR: 0.350, BIAS: 0.826, CSI: 0.416, Accuracy: 0.608
+[Mean Seasonal] Source Scenarios -> POD: 0.685, FAR: 0.424, BIAS: 1.190, CSI: 0.455, Accuracy: 0.608
+
+--- Generating Performance Diagrams (Roebber Plots) ---
+Performance Diagram (Sinks) saved!
+Performance Diagram (Sources) saved!
+
+--- Iniciando Análise SHAP no Conjunto de Treinamento ---
+Salvando gráficos SHAP no diretório...
+
+--- Script finished successfully MRMR MLP D2 SS 7 Key Features ---
+===============================================================
+Job Finished at Fri Jun 12 19:09:14 -03 2026
+===============================================================
