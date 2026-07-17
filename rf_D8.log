@@ -1,0 +1,86 @@
+===============================================================
+Job Started at Sun Jun 14 12:23:42 -03 2026
+Job ID: 455639
+Running on node: sdumont2nd1021
+===============================================================
+Starting Python script for NEE prediction...
+--- Loading data RF D2 SS Experiment 7 Key Features ---
+
+--- Iniciando Optuna Optimization ---
+>> Trial 0 Summary -> MSE Mean & SD: 1.171 (0.069) | RMSE Mean & SD: 1.082 (0.032) | R2 Mean & SD: 0.535 (0.085) | MEF Mean & SD: 0.538 (0.083)
+>> Trial 50 Summary -> MSE Mean & SD: 1.066 (0.055) | RMSE Mean & SD: 1.032 (0.027) | R2 Mean & SD: 0.577 (0.075) | MEF Mean & SD: 0.580 (0.073)
+>> Trial 100 Summary -> MSE Mean & SD: 1.058 (0.033) | RMSE Mean & SD: 1.028 (0.016) | R2 Mean & SD: 0.585 (0.040) | MEF Mean & SD: 0.587 (0.038)
+>> Trial 150 Summary -> MSE Mean & SD: 1.046 (0.033) | RMSE Mean & SD: 1.023 (0.016) | R2 Mean & SD: 0.589 (0.039) | MEF Mean & SD: 0.592 (0.037)
+
+Best Trial Params: 
+n_estimators: 337
+max_depth: 19
+min_samples_split: 7
+min_samples_leaf: 4
+max_features: 1
+min_weight_fraction_leaf: 0.004093212282991586
+min_impurity_decrease: 0.01242705318413774
+oob_score: True
+ccp_alpha: 0.015621854225243393
+
+Best Trial Metrics (Mean ± SD across Seasons):
+MSE:  1.0166 ± 0.0096
+RMSE: 1.0082 ± 0.0048
+R2:   0.5998 ± 0.0468
+MEF:   0.6020 ± 0.0448
+
+Best Trial Metrics DETAILED by Season:
+Estacao_Chuvosa  -> MSE: 1.0262 | RMSE: 1.0130 | R2: 0.6466 | MEF: 0.6468
+Estacao_Seca     -> MSE: 1.0070 | RMSE: 1.0035 | R2: 0.5530 | MEF: 0.5573
+=======================================================
+
+
+--- Treinando o Modelo Random Forest Final ---
+
+=======================================================
+--- FINAL TEST SET METRICS (RF vs BASELINES) ---
+=======================================================
+
+Model: Random Forest
+R2:   0.4651
+MEF:  0.4659
+MSE:  1.3374
+RMSE: 1.1565
+
+Model: Persistence
+R2:   -0.1215
+MEF:  -0.1199
+MSE:  2.8043
+RMSE: 1.6746
+
+Model: Mean Seasonal
+R2:   -0.1035
+MEF:  -0.1018
+MSE:  2.7591
+RMSE: 1.6611
+
+--- Gerando Gráficos Detalhados do RF ---
+
+--- Gerando Gráfico Comparativo: RF vs Baselines ---
+
+--- Scenario Classification Metrics (RF vs Baselines) ---
+
+[Random Forest] Sink Scenarios -> POD: 0.674, FAR: 0.238, BIAS: 0.885, CSI: 0.557, Accuracy: 0.720
+[Random Forest] Source Scenarios -> POD: 0.770, FAR: 0.316, BIAS: 1.125, CSI: 0.568, Accuracy: 0.720
+
+[Persistence] Sink Scenarios -> POD: 0.693, FAR: 0.304, BIAS: 0.995, CSI: 0.532, Accuracy: 0.682
+[Persistence] Source Scenarios -> POD: 0.670, FAR: 0.333, BIAS: 1.005, CSI: 0.502, Accuracy: 0.682
+
+[Mean Seasonal] Sink Scenarios -> POD: 0.537, FAR: 0.350, BIAS: 0.826, CSI: 0.416, Accuracy: 0.608
+[Mean Seasonal] Source Scenarios -> POD: 0.685, FAR: 0.424, BIAS: 1.190, CSI: 0.455, Accuracy: 0.608
+
+--- Generating Performance Diagrams (Roebber Plots) ---
+
+--- Iniciando Análise SHAP no Conjunto de Treinamento ---
+Processando via TreeExplainer
+Salvando gráficos SHAP...
+
+--- Script finished successfully MRMR RF D2 SS 7 Key Features ---
+===============================================================
+Job Finished at Sun Jun 14 12:25:41 -03 2026
+===============================================================
