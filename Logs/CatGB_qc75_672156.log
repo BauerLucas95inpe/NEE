@@ -1,0 +1,75 @@
+===============================================================
+Job Started at Sat Oct  3 23:42:56 -03 2026
+Job ID: 672156
+Running on node: sdumont2nd1002
+===============================================================
+Starting Python script for NEE prediction...
+--- Loading data TFT QC75 Experiment---
+--- Reproducibility configured with SEED=23 ---
+
+--- Iniciando Optuna Optimization (CatBoost) ---
+>> Trial 0 Summary -> MSE Mean & SD: 1.590 (0.089) | RMSE Mean & SD: 1.260 (0.035) | R2 Mean & SD: 0.378 (0.044) | MEF Mean & SD: 0.381 (0.041)
+>> Trial 50 Summary -> MSE Mean & SD: 1.373 (0.007) | RMSE Mean & SD: 1.172 (0.003) | R2 Mean & SD: 0.459 (0.071) | MEF Mean & SD: 0.462 (0.068)
+>> Trial 100 Summary -> MSE Mean & SD: 1.204 (0.042) | RMSE Mean & SD: 1.097 (0.019) | R2 Mean & SD: 0.528 (0.043) | MEF Mean & SD: 0.530 (0.041)
+>> Trial 150 Summary -> MSE Mean & SD: 1.088 (0.044) | RMSE Mean & SD: 1.043 (0.021) | R2 Mean & SD: 0.573 (0.037) | MEF Mean & SD: 0.576 (0.035)
+
+Best Trial Params: 
+iterations: 626
+depth: 4
+learning_rate: 0.010424334881972775
+subsample: 0.5791500337486721
+l2_leaf_reg: 0.1192697250371144
+random_strength: 9.969649022156458
+rsm: 0.7497787574750051
+border_count: 16
+min_data_in_leaf: 36
+
+Best Trial Metrics (Mean ± SD across Folds):
+MSE:  1.0752 ± 0.0654
+RMSE: 1.0364 ± 0.0316
+R2:   0.5795 ± 0.0277
+MEF:   0.5817 ± 0.0257
+
+Best Trial Metrics across the folds:
+Fold 1  -> MSE: 1.1406 | RMSE: 1.0680 | R2: 0.6072 | MEF: 0.6074
+Fold 2  -> MSE: 1.0097 | RMSE: 1.0048 | R2: 0.5518 | MEF: 0.5561
+=======================================================
+
+
+--- Treinando o Modelo Final (CatBoost) ---
+0:	learn: 1.5315255	total: 497us	remaining: 311ms
+100:	learn: 1.2423120	total: 40.5ms	remaining: 210ms
+200:	learn: 1.1317580	total: 80.3ms	remaining: 170ms
+300:	learn: 1.0791095	total: 121ms	remaining: 130ms
+400:	learn: 1.0486544	total: 161ms	remaining: 90.1ms
+500:	learn: 1.0261042	total: 200ms	remaining: 49.9ms
+600:	learn: 1.0062269	total: 239ms	remaining: 9.96ms
+625:	learn: 1.0014638	total: 250ms	remaining: 0us
+R²:    0.4603
+MEF:   0.4611
+MSE:   1.3495
+RMSE:  1.1617
+
+--- Gerando Gráficos Detalhados do XGB ---
+/scratch/cptec/lucas.bauer/nee_ga_project/data/CatGB_qc75.py:257: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  ax1.legend(loc='lower right')
+
+--- Scenario Classification Metrics (CatGB) ---
+Sink Scenarios -> POD: 0.739, FAR: 0.248, BIAS: 0.982, CSI: 0.594, Accuracy: 0.737
+Source Scenarios -> POD: 0.735, FAR: 0.279, BIAS: 1.020, CSI: 0.572, Accuracy: 0.737
+
+--- Generating Performance Diagrams (Roebber Plots) ---
+Performance Diagram (Sinks) saved!
+Performance Diagram (Sources) saved!
+
+--- Iniciando Análise SHAP no Conjunto de Treinamento ---
+Processando via TreeExplainer
+Salvando gráficos SHAP...
+/scratch/cptec/lucas.bauer/nee_ga_project/data/CatGB_qc75.py:421: FutureWarning: The NumPy global RNG was seeded by calling `np.random.seed`. In a future version this function will no longer use the global RNG. Pass `rng` explicitly to opt-in to the new behaviour and silence this warning.
+  shap.summary_plot(shap_values_train, X_train_final, feature_names=feature_names, show=False, max_display=10)
+/scratch/cptec/lucas.bauer/nee_ga_project/data/CatGB_qc75.py:436: FutureWarning: The NumPy global RNG was seeded by calling `np.random.seed`. In a future version this function will no longer use the global RNG. Pass `rng` explicitly to opt-in to the new behaviour and silence this warning.
+  shap.summary_plot(shap_values_train, X_train_final, feature_names=feature_names, plot_type="bar", show=False, max_display=10)
+Experiment CatGB QC75 Finished
+===============================================================
+Job Finished at Sat Oct  3 23:46:15 -03 2026
+===============================================================

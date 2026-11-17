@@ -1,0 +1,70 @@
+===============================================================
+Job Started at Sun Oct  4 19:30:40 -03 2026
+Job ID: 673980
+Running on node: sdumont2nd1038
+===============================================================
+Starting Python script for NEE prediction...
+--- Loading data LightGBM QC75 Experiment---
+--- Reproducibility configured with SEED=23 ---
+
+--- Iniciando Optuna Optimization (LightGBM) ---
+>> Trial 0 Summary -> MSE Mean & SD: 1.177 (0.059) | RMSE Mean & SD: 1.085 (0.027) | R2 Mean & SD: 0.533 (0.082) | MEF Mean & SD: 0.536 (0.079)
+>> Trial 50 Summary -> MSE Mean & SD: 1.159 (0.040) | RMSE Mean & SD: 1.076 (0.019) | R2 Mean & SD: 0.545 (0.042) | MEF Mean & SD: 0.548 (0.039)
+>> Trial 100 Summary -> MSE Mean & SD: 1.216 (0.018) | RMSE Mean & SD: 1.103 (0.008) | R2 Mean & SD: 0.521 (0.053) | MEF Mean & SD: 0.524 (0.051)
+>> Trial 150 Summary -> MSE Mean & SD: 1.094 (0.045) | RMSE Mean & SD: 1.046 (0.022) | R2 Mean & SD: 0.571 (0.037) | MEF Mean & SD: 0.573 (0.035)
+
+Best Trial Params: 
+n_estimators: 882
+max_depth: 5
+num_leaves: 200
+learning_rate: 0.004886838349953033
+subsample: 0.36346834276303946
+colsample_bytree: 0.2137528141674472
+reg_alpha: 0.0019433993929456978
+reg_lambda: 0.24497260873206667
+min_child_samples: 40
+min_split_gain: 0.2809464374070894
+path_smooth: 0.10686241971855176
+max_bin: 5
+
+Best Trial Metrics (Mean ± SD across Folds):
+MSE:  1.0752 ± 0.0159
+RMSE: 1.0369 ± 0.0076
+R2:   0.5770 ± 0.0473
+MEF:   0.5793 ± 0.0451
+
+Best Trial Metrics across the folds:
+Fold 1  -> MSE: 1.0911 | RMSE: 1.0446 | R2: 0.6242 | MEF: 0.6244
+Fold 2  -> MSE: 1.0594 | RMSE: 1.0293 | R2: 0.5297 | MEF: 0.5342
+=======================================================
+
+
+--- Treinando o Modelo Final (LightGBM) ---
+R²:    0.3540
+MEF:   0.3549
+MSE:   1.6153
+RMSE:  1.2709
+
+--- Gerando Gráficos Detalhados do LightGBM ---
+/scratch/cptec/lucas.bauer/nee_ga_project/data/LightGBM_qc75.py:254: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  ax1.legend(loc='lower right')
+
+--- Scenario Classification Metrics (LightGBM) ---
+Sink Scenarios -> POD: 0.757, FAR: 0.260, BIAS: 1.023, CSI: 0.598, Accuracy: 0.734
+Source Scenarios -> POD: 0.710, FAR: 0.272, BIAS: 0.975, CSI: 0.561, Accuracy: 0.734
+
+--- Generating Performance Diagrams (Roebber Plots) ---
+Performance Diagram (Sinks) saved!
+Performance Diagram (Sources) saved!
+
+--- Iniciando Análise SHAP no Conjunto de Treinamento ---
+Processando via TreeExplainer
+Salvando gráficos SHAP...
+/scratch/cptec/lucas.bauer/nee_ga_project/data/LightGBM_qc75.py:418: FutureWarning: The NumPy global RNG was seeded by calling `np.random.seed`. In a future version this function will no longer use the global RNG. Pass `rng` explicitly to opt-in to the new behaviour and silence this warning.
+  shap.summary_plot(shap_values_train, X_train_final, feature_names=feature_names, show=False, max_display=10)
+/scratch/cptec/lucas.bauer/nee_ga_project/data/LightGBM_qc75.py:433: FutureWarning: The NumPy global RNG was seeded by calling `np.random.seed`. In a future version this function will no longer use the global RNG. Pass `rng` explicitly to opt-in to the new behaviour and silence this warning.
+  shap.summary_plot(shap_values_train, X_train_final, feature_names=feature_names, plot_type="bar", show=False, max_display=10)
+Experiment LightGBM QC75 Finished
+===============================================================
+Job Finished at Sun Oct  4 19:35:25 -03 2026
+===============================================================
