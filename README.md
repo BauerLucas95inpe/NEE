@@ -3,60 +3,24 @@
 [![Status](https://img.shields.io/badge/Paper-Under%20Review-blue)]()
 [![Python](https://img.shields.io/badge/Python-3.8%2B-brightgreen)]()
 [![HPC](https://img.shields.io/badge/HPC-LNCC%20SDumont-orange)]()
-[![License](https://img.shields.io/badge/License-MIT-lightgrey)]()
 
-This repository contains the datasets, source codes, High-Performance Computing (HPC) Slurm submission scripts, execution logs, model predictions, and SHAP interpretability outputs for the study:
+This repository contains the datasets, source codes, High-Performance Computing (HPC) Slurm submission scripts, execution logs, model estimates, and SHAP interpretability outputs for the study:
 
 > **Bauer, L. O., et al. (2026).** *Modeling daily Net Ecosystem Exchange in a primary forest site in Amazonia using machine and deep learning techniques* (Under Review).
 
 ---
 
-## 📋 Overview
+## 📋 Abstract & Overview
 
-Accurate estimation of **Net Ecosystem Exchange (NEE)** in the Amazon rainforest is critical for understanding the global carbon cycle and assessing ecosystem responses to climatic anomalies. Global upscaling products (such as FLUXCOM and Fluxcom-X) often struggle to capture NEE variance in tropical primary forests and tend to overestimate carbon sink capacity.
-
-This project provides a complete, reproducible machine learning (ML) and deep learning (DL) pipeline developed specifically for local-scale daily NEE modeling at the **K67 Tapajós National Forest flux tower site** (Santarém, Pará, Brazil). The framework investigates:
-1. **Dual Modeling Paradigms:** Continuous NEE prediction (**regression**) and ecosystem state detection (**binary classification** of carbon sink [$NEE < 0$] vs. source [$NEE > 0$] regimes).
-2. **Data Quality vs. Sample Volume Trade-off:** Comparative evaluation of models trained under strict quality control ($QC = 1$) versus relaxed quality thresholds ($QC > 0.75$).
-3. **Tabular Deep Learning vs. Classical ML:** Benchmarking tabular deep learning and classical algorithms—including **MLP**, **RF**, **FTT**, **TabPFN** (default and tuned), **SVM**, **CatGB** (CatBoost), **XGB** (XGBoost), **NAM**, and **TabM** (alongside LightGBM)—against the **Fluxcom-X** global baseline.
-4. **Model Interpretability (SHAP):** Quantification of physical and biological drivers governing daily carbon fluxes, highlighting the dominant role of deep soil temperature ($30\text{--}100\text{ cm}$) and deep soil moisture ($100\text{--}289\text{ cm}$).
+The Amazon rainforest plays a critical role in the global carbon cycle and Net Ecosystem Exchange (NEE) is crucial for understanding carbon sequestration and the impacts of human-driven disturbances. Initiatives such as FLUXCOM upscale the NEE information globally using machine learning (ML) techniques, but struggle to explain the NEE variance in the Amazon basin and tend to overestimate its sink capacity. In this study, a local data-driven NEE modeling approach in Amazonia was evaluated, as well as the impact of data availability and quality. Data-driven models were developed using standard machine learning methods and deep learning (DL) techniques for tabular data, using two different NEE data quality indices and modelling approaches (regression and classification). By including soil moisture and soil temperature as predictors to better capture ecosystem processes strongly linked to NEE, we establish a new baseline for local NEE modeling in the region. Feature importance analysis using SHAP (Shapley Additive Explanations) identified as the key predictors the soil temperature (28--100 cm), deep-layer soil water (100--289 cm), followed by meteorological variables linked to solar radiation availability and leaf area index (LAI). All models outperformed previous initiatives, capturing seasonal trends with an improvement about 60% for regression metrics (MEF) and 42% sink and source scenarios classification (70--77% accuracy). These findings highlight the potential of ML and DL for regional carbon balance upscaling in the Amazon rainforest and establish a robust basis, incorporating key biological features, for future model developments and NEE estimates.
 
 ---
 
-## 📂 Repository Structure
-
-All experimental directories (`Code_Experiments`, `LNCC_Request_Resource_Configuration`, and `Results`) are systematically organized into **nine model-specific subdirectories** (`MLP`, `RF`, `FTT`, `TabPFN`, `SVM`, `CatGB`, `XGB`, `NAM`, and `TabM`) to ensure modularity and full reproducibility:
-
-```text
-NEE/
-├── Datasets/                                 # Processed daily datasets aligned by QC thresholds (NEE_QC_1.csv, NEE_QC_75.csv)
-├── Code_Experiments/                         # Training, validation, testing, and SHAP scripts organized by model
-│   ├── MLP/                                  # Python scripts (.py)
-│   ├── RF/                                   # Python scripts (.py)
-│   ├── FTT/                                  # Python scripts (.py)
-│   ├── TabPFN/                               # Jupyter Notebooks (.ipynb)
-│   ├── SVM/                                  # Python scripts (.py)
-│   ├── CatGB/                                # Python scripts (.py)
-│   ├── XGB/                                  # Python scripts (.py)
-│   ├── NAM/                                  # Python scripts (.py)
-│   └── TabM/                                 # Python scripts (.py)
-├── LNCC_Request_Resource_Configuration/      # Slurm batch scripts (.sh) for HPC resource allocation at LNCC, organized by model
-│   └── [MLP | RF | FTT | LightGBM | SVM | CatGB | XGB | NAM | TabM]/
-├── Results/                                  # Experimental outputs, HPC logs, and interpretability analyses
-│   ├── SHAP/                                 # SHAP feature importance values plots, organized by model
-│   │   └── [MLP | RF | FTT | LightGBM | SVM | TabPFN | CatGB | XGB | NAM | TabM]/
-│   ├── Logs/                                 # LNCC Slurm standard output/error log files (.out/.log), organized by model
-│   │   └── [MLP | RF | FTT | LightGBM | SVM | TabPFN | CatGB | XGB | NAM | TabM]/
-│   └── Models' output/                       # CSV files containing model predictions and evaluation metrics, organized by model
-│       └── [MLP | RF | FTT | LightGBM | SVM | TabPFN | CatGB | XGB | NAM | TabM]/
-└── README.md                                 # Project documentation and variable specifications
-
-Net Ecosystem Exchange experiment using machine learning and deep learning approaches for modeling daily NEE. 
 Here you can find the '.csv' files in the "Datasets" folder, containing the environmental variables, used as input for the models training and the '.py' and '.ipynb' files with the code to reproduce the experiment, in the "Code_Experiments" folder.
 Besides, you can also see the bash and log files containing the computational resources information and the model's outcomes in the "LNCC_Request_Resource_Configuration" and "Logs" folders.
 
-Daily data that includes the target variable Net Ecosystem Exchange and its predictors used in the experiment made by Bauer et al., (2026) in the paper (under revision) entitled: 
-"Modeling daily Net Ecosystem Exchange in a primary forest site in Amazonia using machine and deep learning techniques". The set of predictors contains 20 environmental variables which include local meteorological variables and ecosystem-related variables such as leaf area index and soil temperature and humidity. 
+The experiment utilize daily data that includes the target variable Net Ecosystem Exchange and its predictors used in the experiment made by Bauer et al., (2026) in the paper (under revision) entitled: "Modeling daily Net Ecosystem Exchange in a primary forest site in Amazonia using machine and deep learning techniques". 
+The set of predictors contains 20 environmental variables which include local meteorological variables and ecosystem-related variables such as leaf area index and soil temperature and humidity. 
 
 The co-location of MERGE and ERA5 Land datasets was performed by selecting the closest available data point within a 0.25º spatial grid around the K67 coordinates. 
 Data integration was carried out after aggregating the ERA5 and MERGE datasets into daily means and cumulative values, aligning them with FLUXNET data availability based on quality control indices (QC = 1 and QC > 0.75). The description of each variable is available below:
@@ -78,3 +42,33 @@ Data integration was carried out after aggregating the ERA5 and MERGE datasets i
 | STRD | J m⁻² | Surface Thermal Radiation Downwards | ERA5 |
 | LAI | m² m⁻² | Leaf Area Index | ERA5 |
 | Precipitation | kg m⁻² | Rain | MERGE |
+
+
+## 📂 Repository Structure
+
+All experimental directories (`Code_Experiments`, `LNCC_Request_Resource_Configuration`, and `Results`) are systematically organized into **model-specific subdirectories** (`MLP`, `RF`, `FTT`, `LightGBM`, `TabPFN`, `SVM`, `CatGB`, `XGB`, `NAM`, and `TabM`):
+
+```text
+NEE/
+├── Datasets/                                 # Processed daily datasets aligned by QC thresholds (NEE_QC_1.csv, NEE_QC_75.csv)
+├── Code_Experiments/                         # Training, validation, testing, and SHAP scripts organized by model
+│   ├── MLP/                                  # Python scripts (.py)
+│   ├── RF/                                   # Python scripts (.py)
+│   ├── FTT/                                  # Python scripts (.py)
+│   ├── LightGBM/                             # Python scripts (.py)
+│   ├── TabPFN/                               # Jupyter Notebooks (.ipynb)
+│   ├── SVM/                                  # Python scripts (.py)
+│   ├── CatGB/                                # Python scripts (.py)
+│   ├── XGB/                                  # Python scripts (.py)
+│   ├── NAM/                                  # Python scripts (.py)
+│   └── TabM/                                 # Python scripts (.py)
+├── LNCC_Request_Resource_Configuration/      # Slurm batch scripts (.sh) for HPC resource allocation at LNCC, organized by model
+│   └── [MLP | RF | FTT | LightGBM | SVM | CatGB | XGB | NAM | TabM]/
+├── Results/                                  # Experimental outputs, HPC logs, and interpretability analyses
+│   ├── SHAP/                                 # SHAP feature importance values plots, organized by model
+│   │   └── [MLP | RF | FTT | LightGBM | SVM | TabPFN | CatGB | XGB | NAM | TabM]/
+│   ├── Logs/                                 # LNCC Slurm standard output/error log files (.out/.log), organized by model
+│   │   └── [MLP | RF | FTT | LightGBM | SVM | TabPFN | CatGB | XGB | NAM | TabM]/
+│   └── Models' output/                       # CSV files containing model predictions and evaluation metrics, organized by model
+│       └── [MLP | RF | FTT | LightGBM | SVM | TabPFN | CatGB | XGB | NAM | TabM]/
+└── README.md                                 # Project documentation and variable specifications
