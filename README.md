@@ -10,8 +10,8 @@ Data integration was carried out after aggregating the ERA5 and MERGE datasets i
 
 | Variable | Units | Description | Source |
 | --- | --- | --- | --- |
-| NEE_VUT_REF | g C m⁻² s⁻¹ | Net Ecosystem Exchange of CO₂ (target variable) | FLUXNET |
-| PPFD | µmol photons m⁻² s⁻¹ | Photosynthetic Photon Flux Density | FLUXNET |
+| NEE_VUT_REF | g C m⁻² d⁻¹ | Net Ecosystem Exchange of CO₂ (target variable) | FLUXNET |
+| PPFD | µmol photons m⁻² d⁻¹ | Photosynthetic Photon Flux Density | FLUXNET |
 | TA | °C | Air Temperature | FLUXNET |
 | LE | W m⁻² | Latent heat flux corrected for the thermal capacity of air | FLUXNET |
 | H | W m⁻² | Sensible heat flux corrected for the thermal capacity of air | FLUXNET |
