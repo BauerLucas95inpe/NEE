@@ -1,0 +1,71 @@
+===============================================================
+Job Started at Sat Oct  3 19:43:20 -03 2026
+Job ID: 671832
+Running on node: sdumont2nd1020
+===============================================================
+Starting Python script for NEE prediction...
+--- Loading data TFT QC1 Experiment---
+--- Reproducibility configured with SEED=23 ---
+
+--- Iniciando Optuna Optimization ---
+>> Trial 0 Summary -> MSE Mean & SD: 1.632 (0.171) | RMSE Mean & SD: 1.276 (0.067) | R2 Mean & SD: 0.338 (0.020) | MEF Mean & SD: 0.339 (0.019)
+>> Trial 50 Summary -> MSE Mean & SD: 1.265 (0.049) | RMSE Mean & SD: 1.125 (0.022) | R2 Mean & SD: 0.481 (0.059) | MEF Mean & SD: 0.482 (0.060)
+>> Trial 100 Summary -> MSE Mean & SD: 1.602 (0.104) | RMSE Mean & SD: 1.265 (0.041) | R2 Mean & SD: 0.348 (0.007) | MEF Mean & SD: 0.350 (0.008)
+>> Trial 150 Summary -> MSE Mean & SD: 1.222 (0.074) | RMSE Mean & SD: 1.105 (0.034) | R2 Mean & SD: 0.498 (0.068) | MEF Mean & SD: 0.499 (0.069)
+
+Best Trial Params: 
+n_estimators: 703
+max_depth: 11
+learning_rate: 0.004793489622342028
+subsample: 0.21373091230451968
+colsample_bytree: 0.34906341260475865
+min_child_weight: 5
+gamma: 0.9988105784516851
+reg_alpha: 2.8912538526821485e-05
+reg_lambda: 0.390824442286772
+
+Best Trial Metrics (Mean ± SD across Folds):
+MSE:  1.1369 ± 0.0613
+RMSE: 1.0658 ± 0.0287
+R2:   0.5333 ± 0.0601
+MEF:   0.5344 ± 0.0606
+
+Best Trial Metrics across the folds:
+Fold 1  -> MSE: 1.1981 | RMSE: 1.0946 | R2: 0.4733 | MEF: 0.4738
+Fold 2  -> MSE: 1.0756 | RMSE: 1.0371 | R2: 0.5934 | MEF: 0.5950
+=======================================================
+
+
+--- Treinando o Modelo Final (XGB) ---
+/prj/cptec/lucas.bauer/.conda/envs/nee_env/lib/python3.14/site-packages/xgboost/training.py:200: UserWarning: [19:54:40] WARNING: /__w/xgboost/xgboost/src/learner.cc:794: 
+Parameters: { "bootstrap" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+R²:    0.4237
+MEF:   0.4294
+MSE:   1.4091
+RMSE:  1.1870
+
+--- Gerando Gráficos Detalhados do XGB ---
+/scratch/cptec/lucas.bauer/nee_ga_project/data/XGB_qc1.py:247: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  ax1.legend(loc='lower right')
+
+--- Scenario Classification Metrics (xgb) ---
+Sink Scenarios -> POD: 0.714, FAR: 0.333, BIAS: 1.071, CSI: 0.526, Accuracy: 0.700
+Source Scenarios -> POD: 0.688, FAR: 0.267, BIAS: 0.938, CSI: 0.550, Accuracy: 0.700
+
+--- Generating Performance Diagrams (Roebber Plots) ---
+Performance Diagram (Sinks) saved!
+Performance Diagram (Sources) saved!
+
+--- Iniciando Análise SHAP no Conjunto de Treinamento ---
+Processando via TreeExplainer
+Salvando gráficos SHAP...
+/scratch/cptec/lucas.bauer/nee_ga_project/data/XGB_qc1.py:412: FutureWarning: The NumPy global RNG was seeded by calling `np.random.seed`. In a future version this function will no longer use the global RNG. Pass `rng` explicitly to opt-in to the new behaviour and silence this warning.
+  shap.summary_plot(shap_values_train, X_train_final, feature_names=feature_names, show=False, max_display=10)
+/scratch/cptec/lucas.bauer/nee_ga_project/data/XGB_qc1.py:427: FutureWarning: The NumPy global RNG was seeded by calling `np.random.seed`. In a future version this function will no longer use the global RNG. Pass `rng` explicitly to opt-in to the new behaviour and silence this warning.
+  shap.summary_plot(shap_values_train, X_train_final, feature_names=feature_names, plot_type="bar", show=False, max_display=10)
+Experiment XGB QC1 Finished
+===============================================================
+Job Finished at Sat Oct  3 19:54:45 -03 2026
+===============================================================

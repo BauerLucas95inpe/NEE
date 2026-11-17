@@ -1,0 +1,51 @@
+===============================================================
+Job Started at Thu Oct 22 18:33:27 -03 2026
+Job ID: 727404
+Running on node: sdumont2nd2031
+===============================================================
+Starting Python script for NEE prediction using FTT...
+--- Loading data NAM QC1 ---
+
+--- Iniciando Optuna (NAM Search) ---
+>> Trial 0 Summary -> MSE Mean & SD: 1.050 (0.070) | RMSE Mean & SD: 1.024 (0.034) | R2 Mean & SD: 0.569 (0.061) | MEF Mean & SD: 0.570 (0.061)
+>> Trial 50 Summary -> MSE Mean & SD: 0.950 (0.145) | RMSE Mean & SD: 0.972 (0.075) | R2 Mean & SD: 0.607 (0.089) | MEF Mean & SD: 0.608 (0.089)
+>> Trial 100 Summary -> MSE Mean & SD: 0.820 (0.027) | RMSE Mean & SD: 0.905 (0.015) | R2 Mean & SD: 0.664 (0.036) | MEF Mean & SD: 0.665 (0.037)
+>> Trial 150 Summary -> MSE Mean & SD: 0.883 (0.033) | RMSE Mean & SD: 0.940 (0.017) | R2 Mean & SD: 0.638 (0.041) | MEF Mean & SD: 0.639 (0.041)
+
+Best Trial Params: 
+nam_n_layers: 3
+nam_hidden_dim: 16
+nam_dropout: 0.2
+learning_rate: 0.008525776539732993
+weight_decay: 0.00010923637149769828
+batch_size: 64
+
+Best Trial Metrics (Mean ± SD across Folds):
+MSE:  0.8032 ± 0.0902
+RMSE: 0.8948 ± 0.0504
+R2:   0.6689 ± 0.0616
+MEF:  0.6696 ± 0.0619
+
+--- Treinando o Modelo Final (NAM em PyTorch) ---
+Early stopping acionado na época 252. Melhor loss: 0.31986
+R²:    0.2381
+MEF:   0.2456
+MSE:   1.8628
+RMSE:  1.3648
+
+--- Gerando Gráficos de Desempenho e Curvas Aditivas do NAM ---
+
+--- Scenario Classification Metrics (NAM) ---
+Sink Scenarios -> POD: 0.743, FAR: 0.342, BIAS: 1.129, CSI: 0.536, Accuracy: 0.700
+Source Scenarios -> POD: 0.662, FAR: 0.254, BIAS: 0.887, CSI: 0.541, Accuracy: 0.700
+
+--- Generating Performance Diagrams (Roebber Plots) ---
+Performance Diagram (Sinks) saved!
+Performance Diagram (Sources) saved!
+
+--- Iniciando Análise SHAP no Conjunto de Treinamento (NAM) ---
+Salvando gráficos SHAP do NAM no diretório...
+Experiment NAM QC1 Finished Successfully
+===============================================================
+Job Finished at Thu Oct 22 18:46:13 -03 2026
+===============================================================

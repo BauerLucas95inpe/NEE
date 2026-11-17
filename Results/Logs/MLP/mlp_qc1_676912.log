@@ -1,0 +1,66 @@
+===============================================================
+Job Started at Mon Oct  5 23:35:12 -03 2026
+Job ID: 676912
+Running on node: sdumont2nd2036
+===============================================================
+Starting Python script for NEE prediction using MLP...
+--- Loading data MLP QC1 Experiment ---
+
+--- Iniciando Optuna Optimization ---
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1791254280.164195 2497461 gpu_device.cc:2020] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 78752 MB memory:  -> device: 0, name: NVIDIA H100 80GB HBM3, pci bus id: 0000:2c:00.0, compute capability: 9.0
+I0000 00:00:1791254323.953586 2497589 device_compiler.h:196] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+>> Trial 0 Summary -> MSE Mean & SD: 1.576 (0.143) | RMSE Mean & SD: 1.254 (0.057) | R2 Mean & SD: 0.351 (0.107) | MEF Mean & SD: 0.353 (0.108)
+>> Trial 50 Summary -> MSE Mean & SD: 0.880 (0.060) | RMSE Mean & SD: 0.938 (0.032) | R2 Mean & SD: 0.638 (0.052) | MEF Mean & SD: 0.639 (0.052)
+>> Trial 100 Summary -> MSE Mean & SD: 1.131 (0.130) | RMSE Mean & SD: 1.062 (0.061) | R2 Mean & SD: 0.541 (0.018) | MEF Mean & SD: 0.543 (0.017)
+>> Trial 150 Summary -> MSE Mean & SD: 0.865 (0.113) | RMSE Mean & SD: 0.928 (0.061) | R2 Mean & SD: 0.643 (0.073) | MEF Mean & SD: 0.644 (0.073)
+
+Best Trial Params: 
+n_units: 24
+n_layers: 1
+learning_rate: 0.008653920002713892
+l2_reg_strength: 0.08933360918802553
+batch_size: 8
+activation: relu
+kernel_initializer: he_normal
+dropout_rate: 0
+n_units_0: 2
+activation_0: tanh
+l2_reg_strength_0: 0.018618723833248096
+kernel_initializer_0: he_normal
+dropout_rate_0: 0
+
+Best Trial Metrics (Mean ± SD across Seasons):
+MSE:  0.7523 ± 0.1050
+RMSE: 0.8652 ± 0.0607
+R2:   0.6892 ± 0.0661
+MEF:   0.6898 ± 0.0664
+
+Best Trial Metrics DETAILED by Season:
+Estacao_Chuvosa  -> MSE: 0.8574 | RMSE: 0.9259 | R2: 0.6231 | MEF: 0.6234
+Estacao_Seca     -> MSE: 0.6473 | RMSE: 0.8045 | R2: 0.7553 | MEF: 0.7562
+=======================================================
+
+
+--- Treinando o Modelo Final ---
+[1m1/5[0m [32m━━━━[0m[37m━━━━━━━━━━━━━━━━[0m [1m0s[0m 205ms/step[1m5/5[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 74ms/step [1m5/5[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m1s[0m 79ms/step
+R²:    0.2592
+MEF:   0.2665
+MSE:   1.8112
+RMSE:  1.3458
+
+--- Gerando Gráficos Detalhados do MLP ---
+Sink Scenarios -> POD: 0.800, FAR: 0.309, BIAS: 1.157, CSI: 0.589, Accuracy: 0.740
+Source Scenarios -> POD: 0.688, FAR: 0.203, BIAS: 0.863, CSI: 0.585, Accuracy: 0.740
+
+--- Generating Performance Diagrams (Roebber Plots) ---
+Performance Diagram (Sinks) saved!
+Performance Diagram (Sources) saved!
+
+--- Iniciando Análise SHAP no Conjunto de Treinamento ---
+Salvando gráficos SHAP no diretório...
+
+--- Script finished successfully MLP QC1 ---
+===============================================================
+Job Finished at Tue Oct  6 04:15:02 -03 2026
+===============================================================

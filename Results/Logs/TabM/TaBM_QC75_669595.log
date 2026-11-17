@@ -1,0 +1,69 @@
+===============================================================
+Job Started at Fri Oct  2 23:03:28 -03 2026
+Job ID: 669595
+Running on node: sdumont2nd2024
+===============================================================
+Starting Python script for NEE prediction using FTT...
+--- Loading data TabM + Embeddings QC75 ---
+
+--- Iniciando Optuna (TabM + Embeddings Search) ---
+>> Trial 0 Summary -> MSE Mean & SD: 1.120 (0.040) | RMSE Mean & SD: 1.058 (0.019) | R2 Mean & SD: 0.556 (0.071) | MEF Mean & SD: 0.559 (0.069)
+>> Trial 50 Summary -> MSE Mean & SD: 1.111 (0.107) | RMSE Mean & SD: 1.053 (0.051) | R2 Mean & SD: 0.557 (0.098) | MEF Mean & SD: 0.559 (0.095)
+>> Trial 100 Summary -> MSE Mean & SD: 0.972 (0.026) | RMSE Mean & SD: 0.986 (0.013) | R2 Mean & SD: 0.616 (0.059) | MEF Mean & SD: 0.618 (0.057)
+>> Trial 150 Summary -> MSE Mean & SD: 0.973 (0.004) | RMSE Mean & SD: 0.986 (0.002) | R2 Mean & SD: 0.617 (0.047) | MEF Mean & SD: 0.619 (0.045)
+
+Best Trial Params: 
+mlp_n_blocks: 2
+mlp_d_block: 64
+mlp_dropout: 0.1
+tabm_k: 16
+embedding_type: periodic
+learning_rate: 0.00019881420122224146
+weight_decay: 0.00014908693066966881
+batch_size: 8
+
+Best Trial Metrics (Mean ± SD across Folds):
+MSE:  0.9126 ± 0.0451
+RMSE: 0.9550 ± 0.0236
+R2:   0.6381 ± 0.0632
+MEF:   0.6402 ± 0.0612
+
+Best Trial Metrics across the folds:
+Fold 1  -> MSE: 0.8674 | RMSE: 0.9314 | R2: 0.7013 | MEF: 0.7014
+Fold 2  -> MSE: 0.9577 | RMSE: 0.9786 | R2: 0.5749 | MEF: 0.5789
+=======================================================
+
+
+--- Treinando o Modelo Final (TabM em PyTorch) ---
+Epoch 1/500 - Loss: 1.00592
+Epoch 50/500 - Loss: 0.44031
+Epoch 100/500 - Loss: 0.38398
+Epoch 150/500 - Loss: 0.33848
+Epoch 200/500 - Loss: 0.30601
+Epoch 250/500 - Loss: 0.27844
+Epoch 300/500 - Loss: 0.25255
+Epoch 350/500 - Loss: 0.23360
+Epoch 400/500 - Loss: 0.21694
+Epoch 450/500 - Loss: 0.19991
+Epoch 500/500 - Loss: 0.18879
+R²:    0.5203
+MEF:   0.5210
+MSE:   1.1995
+RMSE:  1.0952
+
+--- Gerando Gráficos Detalhados do TabM ---
+
+--- Scenario Classification Metrics (TabM) ---
+Sink Scenarios -> POD: 0.688, FAR: 0.180, BIAS: 0.839, CSI: 0.598, Accuracy: 0.758
+Source Scenarios -> POD: 0.835, FAR: 0.289, BIAS: 1.175, CSI: 0.623, Accuracy: 0.758
+
+--- Generating Performance Diagrams (Roebber Plots) ---
+Performance Diagram (Sinks) saved!
+Performance Diagram (Sources) saved!
+
+--- Iniciando Análise SHAP no Conjunto de Treinamento ---
+Salvando gráficos SHAP no diretório...
+Experiment TabM QC75 Finished
+===============================================================
+Job Finished at Sat Oct  3 03:39:14 -03 2026
+===============================================================
