@@ -10,18 +10,18 @@ Data integration was carried out after aggregating the ERA5 and MERGE datasets i
 
 | Variable | Units | Description | Source |
 | --- | --- | --- | --- |
-| NEE_VUT_REF | g C m-2 s-1 | Net Ecosystem Exchange of CO2 (target variable) | FLUXNET |
-| PPFD | µmol photons m-2 s-1 | Photosynthetic Photon Flux Density | FLUXNET |
+| NEE_VUT_REF | g C m^-2 d^-1 | Net Ecosystem Exchange of CO2 (target variable) | FLUXNET |
+| PPFD | µmol photons m^-2 d^-1 | Photosynthetic Photon Flux Density | FLUXNET |
 | TA | ºC | Air Temperature | FLUXNET |
-| LE | W m-2 | Latent heat flux corrected for the thermal capacity of air | FLUXNET |
-| H | W m-2 | Sensible heat flux corrected for the thermal capacity of air | FLUXNET |
+| LE | W m^-2 | Latent heat flux corrected for the thermal capacity of air | FLUXNET |
+| H | W m^-2 | Sensible heat flux corrected for the thermal capacity of air | FLUXNET |
 | VPD | kPa | Water Vapor Pressure Deficit | FLUXNET |
-| SW | W m-2 | Shortwave Incoming | FLUXNET |
-| NETRAD | W m-2 | Net Radiation | FLUXNET |
+| SW | W m^-2 | Shortwave Incoming | FLUXNET |
+| NETRAD | W m^-2 | Net Radiation | FLUXNET |
 | ST(L1-L4) | K | Soil Temperature in layers 1: 0 - 7 cm, 2: 7 - 28 cm, 3: 28 - 100 cm, and 4: 100 - 289 cm. | ERA5 |
-| SWV(L1-L4) | m3m-3 | Volumetric Soil Water in layers 1: 0 - 7 cm, 2: 7 - 28 cm, 3: 28 - 100 cm, and 4: 100 - 289 cm. | ERA5 |
+| SWV(L1-L4) | m^3 m^-3 | Volumetric Soil Water in layers 1: 0 - 7 cm, 2: 7 - 28 cm, 3: 28 - 100 cm, and 4: 100 - 289 cm. | ERA5 |
 | Evavt | m of water equivalent | Evaporation from vegetation transpiration | ERA5 |
-| SSRD | J m-2 | Surface Solar Radiation Downwards | ERA5 |
-| STRD | J m-2 | Surface Thermal Radiation Downwards | ERA5 |
-| LAI | m2m-2 | Leaf Area Index | ERA5 |
-| Precipitation | kg m-2 | Rain | MERGE |
+| SSRD | J m^-2 | Surface Solar Radiation Downwards | ERA5 |
+| STRD | J m^-2 | Surface Thermal Radiation Downwards | ERA5 |
+| LAI | m^2 m^-2 | Leaf Area Index | ERA5 |
+| Precipitation | kg m^-2 | Rain | MERGE |
