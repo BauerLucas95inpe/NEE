@@ -9,6 +9,7 @@ The co-location of MERGE and ERA5 Land datasets was performed by selecting the c
 Data integration was carried out after aggregating the ERA5 and MERGE datasets into daily means and cumulative values, aligning them with FLUXNET data availability based on quality control indices (QC = 1 and QC > 0.75). The description of each variable it is available below:
 
 | Variable | Units | Description | Source |
+| --- | --- | --- | --- |
 | NEE_VUT_REF | g C m-2 s-1 | Net Ecosystem Exchange of CO2 (target variable) | FLUXNET |
 | PPFD | µmol photons m-2 s-1 | Photosynthetic Photon Flux Density | FLUXNET |
 | TA | ºC | Air Temperature | FLUXNET |
